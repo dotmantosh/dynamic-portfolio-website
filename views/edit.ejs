@@ -1,66 +1,59 @@
 <% include partials/header.ejs %>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 m-auto">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto">
+            <% if(work.title){ %>
+            <h1 class="text-center display-4 my-4">Update <%= work.title %></h1>
+            <% } %>
+
+            <form action="/edit/<%= work._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="firstname">Title of work</label>
+                    <input type="text" name="title" id="title" class="form-control" <% if (work.title){ %>
+                        value="<%= work.title %>" <% } %>>
+
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Link to your work, preferrably home page</label>
+                    <input type="text" name="worklink1" id="work link 1" class="form-control" <% if(work.workLink1){ %>
+                        value="<%= work.workLink1 %>" <% } %>>
+                    <small>(optional)</small>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Another link you'd like your viewers to see</label>
+                    <input type="text" name="worklink2" id="work link 2" class="form-control" <% if(work.workLink2){ %>
+                        value="<%= work.worklink2 %>" <% }%>>
+                    <small>(optional)</small>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Another link you'd like your viewers to see</label>
+                    <input type="text" name="work link 3" id="title" class="form-control" <% if(work.workLink3){ %>
+                        value="<%= work.workLink3 %>" <% } %>>
+                    <small>(optional)</small>
+                </div>
+                <div class="form-group">
+                    <label for="description">What is your work all about (Describe your work)</label>
+                    <textarea name="description" id="description" cols="75"
+                        rows="5"><% if (work.description){ %><%= work.description %><% } %></textarea>
+                </div>
+
+                <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
+
+            </form>
+
+            <form action="/edit/<%= work._id %>/ui?_method=PUT" method="POST" enctype="multipart/form-data">
                 <% if(work.title){ %>
-                    <h1 class="text-center display-4 my-4">Update <%= work.title %></h1>
+                <h6 class="mb-0 mt-4">insert new <em><%= work.title %></em> Interface</h6>
                 <% } %>
-                
-                <form action="/<%= work._id %>/edit?_method=PUT" method="POST">
-                    <div class="form-group">
-                        <label for="firstname">Title of work</label>
-                        <input type="text" name="title" id="title" class="form-control"
-                        <% if (work.title){ %>
-                            value="<%= work.title %>"
-                        <% } %>>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="firstname">Link to your work, preferrably home page</label>
-                        <input type="text" name="worklink1" id="work link 1" class="form-control" 
-                        <% if(work.workLink1){ %>
-                            value="<%= work.workLink1 %>"
-                        <% } %>>
-                        <small>(optional)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstname">Another link you'd like your viewers to see</label>
-                        <input type="text" name="worklink2" id="work link 2" class="form-control" 
-                        <% if(work.workLink2){ %>
-                            value="<%= work.worklink2 %>"
-                        <% }%>>
-                        <small>(optional)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstname">Another link you'd like your viewers to see</label>
-                        <input type="text" name="work link 3" id="title" class="form-control" 
-                        <% if(work.workLink3){ %>
-                           value="<%= work.workLink3 %>" 
-                        <% } %>>
-                        <small>(optional)</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">What is your work all about (Describe your work)</label>
-                        <textarea name="description" id="description" cols="75" rows="5"><% if (work.description){ %><%= work.description %><% } %></textarea>
-                    </div>
-                    
-                    <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
-                    
-                </form>
-                
-                <form action="/<%= work._id %>/edit/ui?_method=PUT" method="POST" enctype="multipart/form-data">
-                    <% if(work.title){ %>
-                        <h6 class="mb-0 mt-4">insert new <em><%= work.title %></em> Interface</h6>
-                    <% } %>
-                    <div class="custom-file mb-3">
-                        
-                        <input type="file" name="workui" id="workui" class="custom-file-input">
-                        <label for="workui" class="custom-file-label">choose file</label>
-                        <small>you can use snipping tool on your device to get that</small>
-                    </div>
-                    <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
-                </form>
-            </div>   
+                <div class="custom-file mb-3">
+
+                    <input type="file" name="workui" id="workui" class="custom-file-input">
+                    <label for="workui" class="custom-file-label">choose file</label>
+                    <small>you can use snipping tool on your device to get that</small>
+                </div>
+                <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
+            </form>
         </div>
-    </div> 
-    <% include partials/footer.ejs %>
+    </div>
+</div>
+<% include partials/footer.ejs %>

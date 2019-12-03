@@ -32,6 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Mongo URI
+/* const mongoURI = "mongodb://localhost/portfolio-site"; */ //I have to change back to this URI
 const mongoURI = "mongodb://localhost/image_crud2";
 
 // create connection
@@ -550,6 +551,29 @@ app.get("/portfolio/:id", isLoggedIn, (req, res) => {
   });
 });
 
+app.get('/edit/:id', isLoggedIn, (req, res) => {
+  WorkInfo.findById(req.params.id, (err, work) => {
+    if (err) {
+      return res.status(404).json(err)
+    }
+    res.render("edit", { user: req.user, work: work })
+  })
+})
+
+app.put('/edit/:id', isLoggedIn, (req, res) => {
+  WorkInfo.findByIdAndUpdate(req.params.id, {
+    title: req.body.title,
+    workLink1: req.body.worklink1,
+    workLink2: req.body.worklink2,
+    workLink3: req.body.worklink3,
+    description: req.body.description
+  }, (err, work) => {
+    if (err) {
+      return res.status(400).json(err)
+    }
+    res.redirect('/secret')
+  })
+})
 
 app.put('/edit/:id/ui', isLoggedIn, upload.single('workui'), (req, res) => {
   WorkInfo.findById(req.params.id, (err, work) => {
@@ -577,7 +601,7 @@ app.put('/edit/:id/ui', isLoggedIn, upload.single('workui'), (req, res) => {
   });
 });
 
-app.delete('/:id/work', isLoggedIn, (req, res) => {
+app.delete('/work/:id', isLoggedIn, (req, res) => {
   WorkInfo.findById(req.params.id, (err, work) => {
     if (err) {
       console.log(err);

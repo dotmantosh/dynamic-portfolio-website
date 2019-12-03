@@ -1,68 +1,68 @@
 <% include partials/header.ejs %>
 
-    <div class="container">
-        <div class="show-more-section">
-            <div class="row">
-                <div class="col-md-3">
-                    <% if(work.title){ %>
-                        <h4 class="ml-3 mb-3 work-title">
-                            <%= work.title %>'s links</h4>
+<div class="container">
+    <div class="show-more-section">
+        <div class="row">
+            <div class="col-md-3">
+                <% if(work.title){ %>
+                <h4 class="ml-3 mb-3 work-title">
+                    <%= work.title %>'s links</h4>
+                <% } %>
+
+                <ul class="list-group">
+                    <% if(work.workLink1){ %>
+                    <a href="<%= work.workLink1 %>" title="<%= work.workLink1 %>">
+                        <li class="list-group-item active">worklink 1</li>
+                    </a>
+                    <% } %>
+                    <% if(work.workLink2){ %>
+                    <a href="<%= work.workLink2 %>" title="<%= work.workLink2 %>">
+                        <li class="list-group-item my-1">worklink 2</li>
+                    </a>
+                    <% } %>
+                    <% if(work.workLink3){ %>
+                    <a href="<%= work.workLink3 %>" title="<%= work.workLink3 %>">
+                        <li class="list-group-item">worklink 3</li>
+                    </a>
+                    <% } %>
+
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="img-thumbnail">
+                    <% if(work.workUi){ %>
+                    <img class="img-responsive" src="../image/<%=work.workUi%>" alt="new work" style="height: auto;">
+                    <% } %>
+
+                    <div class="caption-full">
+                        <p class="float-right date">
+                            <%= work.created.toDateString() %>
+                        </p>
+                        <% if (work.title){ %>
+                        <h4 class="work-title">
+                            <%= work.title%>
+                        </h4>
+                        <% } %>
+                        <% if (work.description){ %>
+                        <p>
+                            <%= work.description %>
+                        </p>
                         <% } %>
 
-                            <ul class="list-group">
-                                <% if(work.workLink1){ %>
-                                    <a href="<%= work.workLink1 %>" title="<%= work.workLink1 %>">
-                                        <li class="list-group-item active">worklink 1</li>
-                                    </a>
-                                    <% } %>
-                                        <% if(work.workLink2){ %>
-                                            <a href="<%= work.workLink2 %>" title="<%= work.workLink2 %>">
-                                                <li class="list-group-item my-1">worklink 2</li>
-                                            </a>
-                                            <% } %>
-                                                <% if(work.workLink3){ %>
-                                                    <a href="<%= work.workLink3 %>" title="<%= work.workLink3 %>">
-                                                        <li class="list-group-item">worklink 3</li>
-                                                    </a>
-                                                    <% } %>
+                        <a href="/edit/<%= work._id %>" class="btn btn-primary btn-sm">Edit your work</a>
+                        <button class="btn btn-danger btn-sm float-right" id="work-del-btn">Delete</button>
+                    </div>
 
-                            </ul>
                 </div>
-                <div class="col-md-9">
-                    <div class="img-thumbnail">
-                        <% if(work.workUi){ %>
-                            <img class="img-responsive" src="../image/<%=work.workUi%>" alt="new work" style="height: auto;">
-                            <% } %>
+                <div id="work-delete" class=" bg-light delete-section mb-3 py-3">
+                    <h3 class="text-center">Are you sure you want to this work ??</h3>
 
-                                <div class="caption-full">
-                                    <p class="float-right date">
-                                        <%= work.created.toDateString() %>
-                                    </p>
-                                    <% if (work.title){ %>
-                                        <h4 class="work-title">
-                                            <%= work.title%>
-                                        </h4>
-                                        <% } %>
-                                            <% if (work.description){ %>
-                                                <p>
-                                                    <%= work.description %>
-                                                </p>
-                                                <% } %>
-
-                                                    <a href="/<%= work._id %>/edit" class="btn btn-primary btn-sm">Edit your work</a>
-                                                    <button class="btn btn-danger btn-sm float-right" id="work-del-btn">Delete</button>
-                                </div>
-
-                    </div>
-                    <div id="work-delete" class=" bg-light delete-section mb-3 py-3">
-                        <h3 class="text-center">Are you sure you want to this work ??</h3>
-
-                        <button id="work-no-del" class="btn btn-sm btn-primary mb-1 ml-3">No, Don't Delete</button>
-                        <form action="/<%= work._id %>/work?_method=DELETE" method="POST" class="delete-form float-right">
-                            <button class="btn btn-sm btn-danger  mr-3" id="yes">Yes!, DELETE</button>
-                        </form>
-                    </div>
-                    <!-- <div class="card card-body bg-light review-section" id="work-delete">
+                    <button id="work-no-del" class="btn btn-sm btn-primary mb-1 ml-3">No, Don't Delete</button>
+                    <form action="/work/<%= work._id %>?_method=DELETE" method="POST" class="delete-form float-right">
+                        <button class="btn btn-sm btn-danger  mr-3" id="yes">Yes!, DELETE</button>
+                    </form>
+                </div>
+                <!-- <div class="card card-body bg-light review-section" id="work-delete">
                         <h4>Are you sure you want to delete this work??</h4>
                         
                             <form action="/work/<%= work._id %>?_method=DELETE" method="POST" id="work-del-form">
@@ -73,13 +73,13 @@
                           
                         
                     </div> -->
-                </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <script src="/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <% include partials/footer.ejs %>
+<% include partials/footer.ejs %>
