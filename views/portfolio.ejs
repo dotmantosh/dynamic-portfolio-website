@@ -1,0 +1,235 @@
+<% include partials/header.ejs %>
+    <div class="row">
+        <div class="col-md-2 col-sm-6">
+            <div class="personal-info">
+                <% if(!user.profile_pic){ %>
+                    <div class="img-thumbnail profile-pic"></div>
+                    <% } else if (user.profile_pic){ %>
+                        <img src="image/<%= user.profile_pic %>" alt="profile pic" class="img-thumbnail img-profile-pic">
+                        <% }%>
+
+                            <% if(user.profile_pic){ %>
+                                <span id="update-pp">update</span>
+                                <span id="delete-pp" class="float-right mr-2">delete</span>
+                                <% } else { %>
+                                    <span id="upload-pp">upload profile pic</span>
+                                    <% } %>
+                                        <div id="pp-form-upload">
+                                            <form action="/upload-pp" method="POST" enctype="multipart/form-data">
+                                                <div class="custom-file mb-3">
+                                                    <input type="file" name="profilepic" id="profile-image-upload" class="custom-file-input">
+                                                    <label for="profile-image" class="custom-file-label">Choose image</label>
+                                                    <input type="submit" value="submit" class="btn btn-sm mt-1" id="upload-btn">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="pp-form-update">
+                                            <form action="/update-pp?_method=PUT" method="POST" enctype="multipart/form-data">
+                                                <div class="custom-file mb-3">
+                                                    <input type="file" name="profilepic" id="profile-image-update" class="custom-file-input">
+                                                    <label for="profile-image" class="custom-file-label">Choose image</label>
+                                                    <input type="submit" value="submit" class="btn btn-sm mt-1" id="update-btn">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div id="pp-form-delete">
+                                            <h6>Are you sure you want to delete your profile picture?</h6>
+                                            <form action="/delete-pp/<%= user.profile_pic %>?_method=DELETE" method="POST" class="delete-form">
+                                                <button class="btn btn-sm btn-danger mb-1 ml-1" id="yes">Yes</button>
+                                            </form>
+                                            <button id="no" class="btn btn-sm btn-primary float-right mr-3">No</button>
+                                        </div>
+
+
+                                        <ul class="list-group mt-4">
+                                            <li>
+                                                <strong>FirstName:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].firstName %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+                                            <li>
+                                                <strong>LastName:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].lastName %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+                                            <li>
+                                                <strong>Tel 1:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].tel1 %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+                                            <li>
+                                                <strong>Tel 2:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].tel2 %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+                                            <li>
+                                                <strong>Email:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].email %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+                                            <li>
+                                                <strong>Highest Educational Qualifiaction:</strong>
+                                                <%if (user.personalInfo[0]) {%>
+                                                    <span class="info-em">
+                                                        <%= user.personalInfo[0].h_Education %>
+                                                    </span>
+                                                    <%}%>
+                                            </li>
+
+                                            <a href="/profile" class="btn btn-success btn-md">Update Profile</a>
+                                        </ul>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+            <a href="/new">
+                <div class="jumbotron text-center">
+                    <h1>Upload a portfolio</h1>
+                </div>
+            </a>
+            <div class="row">
+                <% if(user.workInfo){ %>
+                    <% user.workInfo.forEach((work) => { %>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="img-thumbnail img-div">
+                                <img class="img-thumbnail img-responsive" src="image/<%=work.workUi%>" alt="new work">
+                                <div>
+                                    <% if (work.title){ %>
+                                        <h5 class="work-title">
+                                            <%= work.title %>
+                                        </h5>
+                                        <% } %>
+                                            <% if(work.description){ %>
+                                                <p>
+                                                    <%= work.description.substring(0, 50) %>...</p <% } %>
+                                                >
+                                </div>
+                                <a href="/portfolio/<%=work._id%>">
+                                    <button class="btn btn-sm btn-success">See More Details</button>
+                                </a>
+                            </div>
+                        </div>
+                        <% }); %>
+                            <% } %>
+
+
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-6">
+            <div class="social-medias">
+                <h4>social medias</h4>
+                <% if (user.socialMedia){ %>
+                    <% if(user.socialMedia.facebook){ %>
+                        <div class="icons">
+                            <a href="<%= user.socialMedia.facebook %>">
+                                <img src="/upload/img/icons/icons8_facebook_48px.png" alt="" width="38px" title="<%= user.username %>'s facebook">
+                            </a>
+                        </div>
+                        <% } %>
+
+                            <% if(user.socialMedia.instagram){ %>
+                                <div class="icons">
+                                    <a href="<%= user.socialMedia.instagram %>">
+                                        <img src="/upload/img/icons/icons8_instagram_new_48px.png" alt="" width="38px" title="<%= user.username %>'s instagram">
+                                    </a>
+                                </div>
+                                <% } %>
+                                    <% if(user.socialMedia.linkedin){ %>
+                                        <div class="icons">
+                                            <a href="<%= user.socialMedia.linkedin %>">
+                                                <img src="/upload/img/icons/icons8_linkedin_48px.png" alt="" width="38px" title="<%= user.username %>'s linkedin">
+                                            </a>
+                                        </div>
+                                        <% } %>
+                                            <% if(user.socialMedia.twitter){ %>
+                                                <div class="icons">
+                                                    <a href="<%= user.socialMedia.twitter %>">
+                                                        <img src="/upload/img/icons/icons8_twitter_48px.png" alt="" width="38px" title="<%= user.username %>'s twitter">
+                                                    </a>
+                                                </div>
+                                                <% } %>
+                                                    <% if(user.socialMedia.youtube){ %>
+                                                        <div class="icons">
+                                                            <a href="<%= user.socialMedia.youtube %>">
+                                                                <img src="/upload/img/icons/icons8_youtube_48px.png" alt="" width="38px" title="<%= user.username %>'s youtube">
+                                                            </a>
+                                                        </div>
+                                                        <% } %>
+                                                            <% if(user.socialMedia.github){ %>
+                                                                <div class="icons">
+                                                                    <a href="<%= user.socialMedia.github %>">
+                                                                        <img src="/upload/img/icons/icons8_github_32px.png" alt="" width="38px" title="<%= user.username %>'s github">
+                                                                    </a>
+                                                                </div>
+                                                                <% } %>
+                                                                    <% if(user.socialMedia.reddit){ %>
+                                                                        <div class="icons">
+                                                                            <a href="<%= user.socialMedia.reddit %>">
+                                                                                <img src="/upload/img/icons/icons8_reddit_48px.png" alt="" width="38px" title="<%= user.username %>'s reddit">
+                                                                            </a>
+                                                                        </div>
+                                                                        <% } %>
+                                                                            <% if(user.socialMedia.tumblr){ %>
+                                                                                <div class="icons">
+                                                                                    <a href="<%= user.socialMedia.tumblr %>">
+                                                                                        <img src="/upload/img/icons/icons8_tumblr_48px.png" alt="" width="38px" title="<%= user.username %>'s tumblr">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <% } %>
+                                                                                    <% if(user.socialMedia.pinterest){ %>
+                                                                                        <div class="icons">
+                                                                                            <a href="<%= user.socialMedia.pinterest %>">
+                                                                                                <img src="/upload/img/icons/icons8_pinterest_48px_1.png" alt="" width="38px" title="<%= user.username %>'s pinterest">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <% } %>
+                                                                                            <% } %>
+
+
+                                                                                                <a href="/socialmedia" class="btn btn-success btn-sm btn-block my-3">Update Social media info</a>
+            </div>
+
+            <div class="comment-section">
+                <h5>
+                    <u>Say something about Username's work</u>
+                </h5>
+                <form action="">
+                    <div class="form-group">
+                        <h6>Name/Name of Organization</h6>
+                        <input type="text" placeholder="enter name" class="form-control">
+                    </div>
+
+                    <h6>Enter your comment</h6>
+                    <textarea name="comment" id="" cols="25" rows="4"></textarea>
+                </form>
+
+                <h6>
+                    <u>Comments</u>
+                </h6>
+                <ul style="list-style: none; padding-inline-start: 0;">
+                    <li>comments</li>
+                    <li>comments</li>
+                    <li>comments</li>
+                    <li>comments</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <% include partials/footer.ejs %>

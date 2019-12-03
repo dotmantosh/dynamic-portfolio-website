@@ -1,0 +1,189 @@
+ .navbar{
+    padding: 10px 0; 
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    padding-right: 30px;
+}
+
+.form-inline {
+    margin-right: 30px;
+}
+
+.form-inline input{
+    color: black;
+}
+
+#user{
+    display: inline-block;
+}
+#nav-user-name{
+    padding-left: 5px;
+    padding-top: 10px;
+    font-size: 13px;
+    color: #2BC7BC;
+}
+
+#user-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.jumbotron{
+    border-left: 3px dashed #212529;
+    border-right: 3px dashed #212529;
+    border-bottom: 3px dashed #212529;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 30px 0;
+    color: black;
+}
+.jumbotron:hover{
+    background: #d7e4f0
+}
+a:hover{
+    text-decoration: none;
+}
+
+.profile-pic{
+    width: 200px; 
+    height: 220px; 
+    margin-left: 10px; 
+    margin-top: 10px;
+}
+
+#pp-form-upload{
+    display: none;
+} 
+#pp-form-update{
+    display: none;
+}
+
+#pp-form-delete{
+    display: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background: rgb(224, 228, 227);
+    padding: 2px;
+}
+
+.delete-form{
+    display: inline-block;
+}
+
+.display-none{
+    display: none;
+}
+
+.info-em{
+    color: rgb(59, 221, 10);
+}
+
+#upload-pp, #update-pp{
+    margin-left: 10px;
+    margin-top: 10px;
+    color: #999;
+    text-decoration: underline;
+}
+
+#upload-pp, #update-pp:hover{
+    color: #2689eb;
+    cursor: pointer;
+}
+
+#delete-pp{
+    color: #999;
+    text-decoration: underline;
+}
+
+#delete-pp:hover{
+    color: rgb(233, 84, 84);
+    cursor: pointer;
+}
+
+
+.img-profile-pic{
+    border-radius: inherit; 
+    width: 200px; 
+    height: 220px;
+    object-fit: cover;
+}
+
+.list-group{
+    margin-left: 10px; 
+    margin-right: 10px;
+    list-style: none; 
+}
+
+.personal-info ul li{
+    margin-bottom: 20px;
+}
+
+
+div.img-thumbnail.img-div{
+    margin-bottom: 10px;
+}
+
+.col-md-4,.col-md-6{
+    padding-left: 10px;
+    padding-right:10px; 
+}
+
+.pro-courses{
+    max-height: 100px;
+    overflow: auto;
+}
+.pro-courses ul li {
+    margin-bottom: 3px;
+    list-style: circle;
+}
+
+.icons{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.social-medias{
+    margin-top: 15px;
+}
+.comment-section h5:first-of-type{
+    margin-bottom: 20px;
+}
+
+.caption-full{
+    padding: 10px;
+}
+.comment-section{
+    margin-top: 40px;
+}
+
+.show-more-section{
+    margin-top: 20px;
+}
+.delete-section{
+    margin-top: 20px;
+    display: none;
+}
+
+
+.img-thumbnail .img-responsive{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.date{
+    font-size: 13px;
+    color: #999;
+}
+
+.work-title{
+    color: #007bff;
+    overflow-wrap: break-word;
+}
+
+.img-div p{
+    overflow-wrap: break-word;
+}

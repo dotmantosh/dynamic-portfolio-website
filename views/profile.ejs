@@ -1,0 +1,71 @@
+<% include partials/header.ejs %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <h1 class="text-center display-4 my-4">Update your personal Profile</h1>
+                <form action="/profile" method="POST">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name"
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].firstName){%>value="<%=user.personalInfo[0].firstName%>"<%}%>
+                        <% } %>>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" 
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].lastName){%>value="<%=user.personalInfo[0].lastName%>"<%}%>
+                        <% } %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="tel1">Tel 1</label>
+                        <input type="text" name="tel1" id="tel1" class="form-control" placeholder="phone 1" 
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].tel1){%>value="<%=user.personalInfo[0].tel1%>"<%}%>
+                        <% } %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Tel2</label>
+                        <input type="text" name="tel2" id="tel2" class="form-control" placeholder="phone 2" 
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].tel2){%>value="<%=user.personalInfo[0].tel2%>"<%}%>
+                        <% } %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="e E-mail" 
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].email){%>value="<%=user.personalInfo[0].email%>"<%}%>
+                        <% } %>>
+                    </div>
+                    <div class="form-group">
+                        <label for="heq">Highest Educational Qualification</label>
+                        <input type="text" name="heq" id="heq" class="form-control" placeholder="Educational qualification" 
+                        <% if(user.personalInfo.length > 0){ %>
+                            <%if (user.personalInfo[0].h_Education){%>value="<%=user.personalInfo[0].h_Education%>"<%}%>
+                        <% } %>>
+                    </div>
+                    
+                    <!-- <div class="custom-file mb-3">
+                            <input type="file" name="profilepic" id="profile-image" class="custom-file-input">
+                            <label for="profile-image" class="custom-file-label">Choose profile pic</label>
+                        </div> -->
+                    <input type="submit" value="submit" class="btn btn-primary btn-block">
+                   
+                   <!--  <form action="/:username/courses" method="POST" class="mt-4">
+                        <label for="pro_courses">Enter a professional course</label>
+                        <input type="text" name="pro_courses" id="pro_courses" class="form-control" placeholder="professional courses">
+                        <small style="display: block;">You can enter as many courses as you have</small>
+                        <button type="submit" class="btn btn-sm btn-primary mt-1">Enter a course</button>  
+                    </form> -->
+                    
+                </form>
+                
+            </div>   
+        </div>
+    </div> 
+    <script src="/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<% include partials/footer.ejs %>

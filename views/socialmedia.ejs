@@ -1,0 +1,106 @@
+<% include partials/header.ejs %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <h1 class="text-center display-4 my-4">Update your social media links</h1>
+                <form action="/socialmedia" method="POST">
+                    <div class="form-group">
+                        <label for="firstname">Facebook</label>
+                        <input type="text" name="facebook" id="facebook" class="form-control" placeholder="facebook: e.g http://facebook.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.facebook){%>
+                                value="<%=user.socialMedia.facebook%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Instagram</label>
+                        <input type="text" name="instagram" id="instagram" class="form-control" placeholder="instagram: e.g http://instagram.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.instagram){%>
+                                value="<%=user.socialMedia.instagram%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">LinkedIn</label>
+                        <input type="text" name="linkedin" id="linkedin" class="form-control" placeholder="linkedin: e.g http://linkedin.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.linkedin){%>
+                                value="<%=user.socialMedia.linkedin%>"
+                            <%}%>>
+                        <% } %>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Twitter</label>
+                        <input type="text" name="twitter" id="twitter" class="form-control" placeholder="twitter: e.g http://twitter.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.twitter){%>
+                                value="<%=user.socialMedia.twitter%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Youtube</label>
+                        <input type="text" name="youtube" id="youtube" class="form-control" placeholder="youtube: e.g http://youtube.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.youtube){%>
+                                value="<%=user.socialMedia.youtube%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Github</label>
+                        <input type="text" name="github" id="github" class="form-control" placeholder="github repo: e.g http://github.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.github){%>
+                                value="<%=user.socialMedia.github%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Tumblr</label>
+                        <input type="text" name="tumblr" id="tumblr" class="form-control" placeholder="tumblr: e.g http://tumblr.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.tumblr){%>
+                                value="<%=user.socialMedia.tumblr%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Reddit</label>
+                        <input type="text" name="reddit" id="reddit" class="form-control" placeholder="reddit: e.g http://reddit.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.reddit){%>
+                                value="<%=user.socialMedia.reddit%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Pinterest</label>
+                        <input type="text" name="pinterest" id="pinterest" class="form-control" placeholder="pinterest: e.g http://pinterest.com/tommy" 
+                        <% if(user.socialMedia){ %>
+                            <%if (user.socialMedia.pinterest){%>
+                                value="<%=user.socialMedia.pinterest%>"
+                            <%}%>>
+                        <% } %>
+                        
+                    </div>
+                    
+                    <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
+                     
+                </form>
+                
+            </div>   
+        </div>
+    </div> 
+    <script src="/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<% include partials/footer.ejs %>

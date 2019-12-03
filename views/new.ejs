@@ -1,0 +1,44 @@
+<% include partials/header.ejs %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto">
+                <h1 class="text-center display-4 my-4">Upload a Portfoilo</h1>
+                <form action="/new" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Title of work</label>
+                        <input type="text" name="title" id="title" class="form-control" placeholder="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="worklink3">Link to your work, preferrably home page</label>
+                        <input type="text" name="worklink1" id="worklink1" class="form-control" placeholder="work link 1">
+                        <small>(optional)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="worklink3">Another link you'd like your viewers to see</label>
+                        <input type="text" name="worklink2" id="worklink2" class="form-control" placeholder="work link 2">
+                        <small>(optional)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="worklink#">Another link you'd like your viewers to see</label>
+                        <input type="text" name="worklink3" id="worklink3" class="form-control" placeholder="work link 3">
+                        <small>(optional)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">What is your work all about (Describe your work)</label>
+                        <textarea name="description" id="description" cols="75" rows="5"></textarea>
+                    </div>
+                    <h6 class="mb-0">insert work user Interface</h6>
+                    <div class="custom-file mb-3">
+                        
+                            <input type="file" name="workui" id="workui" class="custom-file-input">
+                            <label for="workui" class="custom-file-label">choose file</label>
+                            <small>you can use snipping tool on your device to get that</small>
+                        </div>
+                    <input type="submit" value="submit" class="btn btn-primary btn-block mt-3">
+                    
+                </form>
+                
+            </div>   
+        </div>
+    </div> 
+    <% include partials/footer.ejs %>
